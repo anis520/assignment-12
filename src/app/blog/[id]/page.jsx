@@ -5,7 +5,7 @@ import bogimg from "@/app/img/blog.webp";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-const page = async () => {
+const Singlepage = async () => {
   const params = useParams();
   console.log(params);
   const singleBlog = await getSingleBlog(params.id);
@@ -34,4 +34,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Singlepage;
