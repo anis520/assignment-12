@@ -1,26 +1,12 @@
-import Image from "next/image";
-import { getBlog } from "./service/getBlog";
+import React from "react";
+import { getBlog } from "../service/getBlog";
 import Link from "next/link";
 
-export default async function Home() {
+const page = async () => {
   const blogdata = await getBlog();
-
   return (
-    <main className="mb-5">
-      <div className="hero  py-20 bg-base-100">
-        <div className="hero-content text-center">
-          <div className="max-w-md">
-            <h1 className="text-5xl font-bold">Hello there</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-            <button className="btn btn-primary">Get Started</button>
-          </div>
-        </div>
-      </div>
-
+    <div className="my-12">
+      {" "}
       <div className="w-11/12 mx-auto grid    md:grid-cols-2 gap-4 lg:grid-cols-3 ">
         {blogdata?.map((item, key) => {
           return (
@@ -41,13 +27,15 @@ export default async function Home() {
                 <div className="card-actions justify-end">
                   <Link href={`/blog/${item.id}`}>
                     <button className="btn btn-primary">See more</button>
-                  </Link>
+                  </Link>{" "}
                 </div>
               </div>
             </div>
           );
         })}
       </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default page;
